@@ -1,0 +1,16 @@
+<%= form_for @changeset, article_path(@conn, :create), fn f -> %>
+
+<div class="input_wrapper center_block">
+  <label>Title</label>
+  <%= text_input f, :title %>
+</div>
+
+  <div class="input_wrapper center_block">
+    <%= textarea f, :content %>
+  </div>
+
+
+  <div class="input_wrapper center_block">
+    <%= submit "Save" %>
+  </div>
+<% end %>

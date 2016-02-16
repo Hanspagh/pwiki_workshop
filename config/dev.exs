@@ -36,7 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 config :pwiki, Pwiki.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "Postgres123",
   database: "pwiki_dev",
   hostname: "localhost",
   pool_size: 10
