@@ -11,7 +11,7 @@ defmodule Pwiki.ArticleController do
         concent = Earmark.to_html body
         render conn, "index.html", title: name, concent: concent
       {:error, reason} ->
-        redirect conn, to: "/new/" <> name
+        redirect conn, to: article_path(conn, :new, name)
     end
   end
 
@@ -22,7 +22,7 @@ defmodule Pwiki.ArticleController do
   def create(conn, %{"article" => article}) do
       path = @input <> article["title"] <> ".md"
       case File.write(path, article["content"]) do
-         :ok ->  redirect conn, to: "/" <> article["title"]
+         :ok ->  redirect conn, to: article_path(conn, :show, article["title"])
          {:error, reason} -> render conn, Pwiki.ErrorView, "500.html"
       end
 

@@ -9,9 +9,7 @@ defmodule Pwiki.PageController do
 
   def random(conn, _params) do
     {:ok, articles} = File.ls(@input)
-    IO.inspect articles
     article = articles |> Enum.random
-    IO.inspect article
-    redirect conn, to: "/" <> ( article |> String.replace(".md",""))
+    redirect conn, to: article_path(conn, :show , article |> String.replace(".md",""))
   end
 end
